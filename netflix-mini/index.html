@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<title>CineMX — Películas y series en español</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="CineMX: mira películas y series en español con tráilers, categorías y búsqueda. Gratis y rápido.">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Cine<span>MX</span></div>
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="search-input" type="search" placeholder="Buscar películas o series...">
+  </div>
+</header>
+
+<main>
+  <div id="hero" class="hero"></div>
+  <nav id="genre-bar" class="genre-bar" aria-label="Categorías"></nav>
+  <div id="rows"></div>
+</main>
+
+<footer class="site-footer">
+  <p>Este sitio usa cookies y publicidad para mantenerse gratuito. © 2026 CineMX.</p>
+  <p><a href="#">Política de privacidad</a> · <a href="admin.html">Panel admin</a></p>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="active">
+    <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+    Inicio
+  </a>
+  <a href="index.html#genre-bar">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    Categorías
+  </a>
+  <a href="admin.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+    Admin
+  </a>
+</nav>
+
+<script src="js/app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

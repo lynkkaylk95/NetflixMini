@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trang quản trị — CineMX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Cine<span>MX</span></div>
+  <div style="margin-left:auto;color:var(--text-dim);font-size:0.8rem;">Trang quản trị</div>
+</header>
+
+<main class="admin-wrap">
+  <h1>Quản lý phim</h1>
+  <p class="sub-text">Repository đang kết nối: <strong id="repo-name">—</strong>. Mọi thay đổi sẽ được đẩy thẳng lên GitHub; Cloudflare Pages sẽ tự cập nhật website sau vài giây.</p>
+
+  <section class="panel">
+    <h2>1. Kết nối với GitHub</h2>
+    <form id="connect-form">
+      <div class="field">
+        <label>Token truy cập cá nhân (Personal Access Token)</label>
+        <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Kết nối</button>
+    </form>
+    <div id="connect-status" class="status-msg"></div>
+    <p class="sub-text" style="margin-top:10px;">
+      Chưa có token? Vào GitHub → Settings → Developer settings → Personal access tokens →
+      Fine-grained tokens → Generate new token. Chỉ cấp quyền cho repository của website này,
+      và ở phần "Repository permissions" chọn <strong>Contents: Read and write</strong>.
+      Token chỉ được lưu trong trình duyệt của bạn (localStorage), không gửi đi đâu khác —
+      nhưng đừng chia sẻ trang admin này hoặc token cho người khác.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2 id="form-title">Thêm phim mới</h2>
+    <div id="save-status" class="status-msg"></div>
+    <form id="movie-form">
+      <div class="field">
+        <label>Tiêu đề *</label>
+        <input type="text" id="title" required placeholder="Ví dụ: Sombras del Desierto">
+      </div>
+      <div class="field">
+        <label>Mô tả</label>
+        <textarea id="description" placeholder="Tóm tắt ngắn gọn (nên viết bằng tiếng Tây Ban Nha vì khán giả xem là người Mexico)..."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Thể loại</label>
+          <input type="text" id="category" placeholder="Acción, Drama, Romance CEO...">
+        </div>
+        <div class="field">
+          <label>Năm sản xuất</label>
+          <input type="number" id="year" placeholder="2026">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>YouTube ID *</label>
+          <input type="text" id="youtubeId" required placeholder="Ví dụ: dQw4w9WgXcQ">
+        </div>
+        <div class="field">
+          <label>Đánh giá (0–5)</label>
+          <input type="number" id="rating" min="0" max="5" step="0.1" placeholder="4.5">
+        </div>
+      </div>
+      <div class="field">
+        <label>Danh sách tập (ngăn cách bằng dấu phẩy, không bắt buộc)</label>
+        <input type="text" id="episodes" placeholder="Episodio 1, Episodio 2, Episodio 3">
+      </div>
+      <div class="field">
+        <label>Poster — tải ảnh lên</label>
+        <input type="file" id="poster-file" accept="image/*">
+      </div>
+      <div class="field">
+        <label>...hoặc dán URL ảnh (nếu không tải file)</label>
+        <input type="text" id="poster-url" placeholder="https://...">
+      </div>
+      <div class="field-row">
+        <button class="btn btn-primary btn-block" type="submit" id="save-button">Lưu và đăng lên web</button>
+        <button class="btn btn-ghost" type="button" id="cancel-edit">Hủy</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Phim đã đăng</h2>
+    <div id="load-status" class="status-msg"></div>
+    <div id="movie-list"></div>
+  </section>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/github.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
